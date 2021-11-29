@@ -45,3 +45,30 @@ const { findRenderedDOMComponentWithClass } = require("react-dom/test-utils")
 // RESTS ON AXIS, CAN NOT BE TILTED
 // rect(250, 200, 300, 200);
 // rectangle with top left coordinate at x-250, y-200 with a width of 300 pixels to the right and height of 200 pixels down
+
+// HOUSE DRAWING
+// main house
+// rect(250,250,300,300)
+// door
+// rect(375,450,50,100)
+// left window
+// rect(275,300,100,80)
+// line(325,300,325,380)
+// line(275,340,375,340)
+// right window
+// rect(425,300,100,80)
+// line(475,300,475,380)
+// line(425,340,525,340)
+// roof
+// line(250,250,400,100)
+// line(400,100,550,250)
+// roof window
+// circle(400,190,25)
+// chimney
+// line(480,180,480,125)
+// line(480,125,505,125)
+// line(505,125,505,205)
+// smoke
+// circle(520,120,5)
+// circle(566,100,10)
+// circle(610,75,15)
