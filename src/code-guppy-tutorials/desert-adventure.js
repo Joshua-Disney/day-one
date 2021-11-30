@@ -417,9 +417,9 @@
 
 // Happy coding!
 
-// const speed = 8;
-// const jumpVelocity = -25;
-// const gravity = 1;
+const speed = 8;
+const jumpVelocity = -25;
+const gravity = 1;
 
 // const debug = false;
 
