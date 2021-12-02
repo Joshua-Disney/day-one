@@ -49,7 +49,7 @@ function update() {
         run(1)
         updateTiles(1)
     }
-
+    // Only lets the player jump if they're already standing
     if ((keyIsDown(UP_ARROW) || keyIsDown(32)) && player.state === "standing")
         jump()
     else 
