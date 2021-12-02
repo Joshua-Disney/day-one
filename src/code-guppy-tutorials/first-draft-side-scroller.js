@@ -32,7 +32,7 @@ player.debug = debug
 function loop() {
     // update function handles all player movement
     update()
-    // ADD THIS BACK IN AFTER TEST
+    // ADD THIS BACK IN AFTER TEST 
     // checkCollisions()
 }
 
@@ -49,7 +49,7 @@ function update() {
         run(1)
         updateTiles(1)
     }
-
+    // Only lets the player jump if they're already standing
     if ((keyIsDown(UP_ARROW) || keyIsDown(32)) && player.state === "standing")
         jump()
     else 
@@ -87,27 +87,56 @@ function run(dir) {
     player.mirrorX(dir)
 }
 
-// Creating tiles BEFORE making update function, might break code
+// // This creates 8 tiles that are all grass blocks.
+// function createTiles() {
+//     let tileArr = []
+
+//     for (let i = 0; i < 8; i++) {
+//         // Each tile is 128px, 64 as the halfway point puts the first tile directly against the left edge of the screen.
+//         let tile = sprite("grass02", 64 + 128 * i, 578, 1)
+//         tileArr.push(tile)    }
+
+//     return tileArr
+// }
+
 function createTiles() {
     let tileArr = []
 
-    for (let i = 0; i < 8; i++) {
-        let tile = sprite("grass02", 64 + 128 * i, 578, 1)
-        tileArr.push(tile)    }
+    function getRandom() {
+        let rando = Math.floor(Math.random() * 16 + 1)
+        if (rando < 10) {
+            rando = "" + 0 + rando
+        } else rando = toString(rando)
+        return rando
+    }
+
+    for (let i = 0; i < 100; i++) {
+        let tile = sprite(`grass${getRandom()}`, 64 + 128 * i, 578, 1)
+        tileArr.push(tile)
+    }
+    tileArr.push(sprite("snow02", 12864, 578, 1))
 
     return tileArr
 }
 
-// Might need to move this above createTiles, standby
-function updateTiles(dir) {
-    let tilesEnd = tileArr.length * 128
+// // This turns the tile array into an infinite treadmill.
+// function updateTiles(dir) {
+//     let tilesEnd = tileArr.length * 128
 
+//     for (let tile of tileArr) {
+//         tile.x -= dir * speed
+
+//         if (tile.x < -64)
+//             tile.x += tilesEnd
+//         else if (tile.x > width + 64)
+//             tile.x -= tilesEnd
+//     }
+// }
+
+function updateTiles(dir) {
     for (let tile of tileArr) {
         tile.x -= dir * speed
-
-        if (tile.x < -64)
-            tile.x += tilesEnd
-        else if (tile.x > width + 64)
-            tile.x -= tilesEnd
     }
 }
+
+CODE GUPPY CAN GET FUCKED
