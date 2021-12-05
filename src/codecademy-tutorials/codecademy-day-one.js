@@ -91,4 +91,91 @@ function preload() {
   }
   
   const game = new Phaser.Game(config)
+
   
+// SETTING CONFIG AND PASSING IT INTO PHASER AS A GAME OBJECT
+const config = {
+    width : 400,
+    height : 600,
+    backgroundColor : 0x0000
+  }
+  
+const game = new Phaser.Game(config)
+
+
+// ADDING CREATE TO CONFIG
+// Create a create() function here:
+function create() {
+    this.add.text(125, 300, "This is text! :O")
+  }
+  
+  const config = {
+      type: Phaser.AUTO,
+      width: 450,
+      height: 600,
+      backgroundColor: "#a0a0dd",
+    // Add in the scene information in the config here:
+    scene: { create }
+  }
+  
+  const game = new Phaser.Game(config)
+
+  
+//   BUILDING UPDATE FUNCTION AND ADDING TO CONFIG
+let codey;
+
+function preload() {
+  this.load.image('codey', 'https://content.codecademy.com/courses/learn-phaser/codey.png');
+}
+
+function create() {
+  codey = this.add.sprite(30, 200, 'codey')
+}
+
+// Create your update() function here
+function update() {
+  codey.x += 1
+}
+
+const config = {
+	type: Phaser.AUTO,
+	width: 400,
+	height: 400,
+	backgroundColor: "#5f2a55",
+	scene: {
+    preload,
+    create,
+    update
+    // Include update here!
+	}
+}
+
+const game = new Phaser.Game(config)
+
+
+// CREATING GAMESTATE AND UPDATING IT WITHIN SCOPE
+// Define "gameState" here
+const gameState = {}
+
+function create() {
+  // Create a circle and assign it to gameState.circle here
+  gameState.circle = this.add.circle(225, 0, 100, 0xff0000)
+}
+
+function update() {
+  // Update the circle in gameState.circle here
+  gameState.circle.y += 1
+}
+
+const config = {
+	type: Phaser.AUTO,
+	width: 450,
+	height: 600,
+	backgroundColor: "#99ff99",
+	scene: {
+    create,
+    update
+	}
+}
+
+const game = new Phaser.Game(config)
