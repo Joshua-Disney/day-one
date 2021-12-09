@@ -232,35 +232,126 @@ const gameState = {
   // USE PHISER'S CREATECURSORKEYS AND ISDOWN FUNCTIONS TO WATCH FOR KEYPRESS
   const gameState = {}
 
+  function preload() {
+    this.load.image('codey', 'https://content.codecademy.com/courses/learn-phaser/codey.png');
+  }
+  
+  function create() {
+    gameState.codey = this.add.sprite(150, 200, 'codey')
+    // Set cursor keys here!
+    gameState.cursors = this.input.keyboard.createCursorKeys()
+  }
+  
+  function update() {
+    // Update based on keypress here!
+   if (gameState.cursors.right.isDown) {
+     gameState.codey.x += 5
+   } else if (gameState.cursors.left.isDown) {
+     gameState.codey.x -= 5
+   } else if (gameState.cursors.space.isDown) {
+     gameState.codey.y -= 5
+   } else if (gameState.cursors.down.isDown) {
+     gameState.codey.y += 5
+   }
+  }
+  
+  const config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    backgroundColor: "#5f2a55",
+    scene: {
+      preload,
+      create,
+      update
+    }
+  }
+  
+  const game = new Phaser.Game(config)
+
+
+
+// ADD AUDIO FILES AND PLAY THEM ON RENDER OR ON EVENTS
+const gameState = {}
+
 function preload() {
-  this.load.image('codey', 'https://content.codecademy.com/courses/learn-phaser/codey.png');
+  // load our 'incredible' sound here!
+    this.load.audio('incredible', 'https://content.codecademy.com/courses/learn-phaser/incredible.mp3')
+
+    this.load.audio('awesome', 'https://content.codecademy.com/courses/learn-phaser/reallyawesome.mp3')
+
 }
 
 function create() {
-  gameState.codey = this.add.sprite(150, 200, 'codey')
-  // Set cursor keys here!
+  // add our 'incredible' sound to our scene here!
+  gameState.incredible = this.sound.add('incredible')
+
+  gameState.awesome = this.sound.add('awesome')
+  
+  // Display "Incredible" and "Really, really awesome" buttons
+  gameState.incredibleBox = this.add.rectangle(200, 150, 300, 200, 0xdadaaa)
+  gameState.awesomeBox = this.add.rectangle(200, 400, 300, 200, 0xaadada)
+  gameState.incredibleText = this.add.text(150, 135, "Incredible", { fill: "#222222", font: "20px Times New Roman"})
+  gameState.awesomeText = this.add.text(110, 385, "Really, really awesome", { fill: "#222222", font: "20px Times New Roman"})
+  gameState.incredibleBox.setInteractive();
+  gameState.awesomeBox.setInteractive();
+
+  // add a 'pointerup' handler to incredibleBox here:
+  gameState.incredibleBox.on('pointerup', function() {
+    gameState.incredible.play()
+  })
+  
+  gameState.awesomeBox.on('pointerup', function() {
+    gameState.awesome.play()
+  })
+}
+
+const config = {
+  type: Phaser.AUTO,
+  width: 400,
+  height: 600,
+  backgroundColor: "#333333",
+  scene: {
+    preload,
+    create
+  }
+}
+
+const game = new Phaser.Game(config)
+
+// PUT IT ALL TOGETHER FROM SCRATCH
+const gameState = {}
+
+function preload() {
+  this.load.image('codey', 'https://content.codecademy.com/courses/learn-phaser/codey.png')
+}
+
+function create() {
+  gameState.codey = this.add.sprite(300, 300, 'codey')
   gameState.cursors = this.input.keyboard.createCursorKeys()
 }
 
 function update() {
-  // Update based on keypress here!
- if (gameState.cursors.right.isDown) {
-   gameState.codey.x += 5
- } else if (gameState.cursors.left.isDown) {
-   gameState.codey.x -= 5
- }
+  if (gameState.cursors.down.isDown) {
+    gameState.codey.y += 1
+  } else if (gameState.cursors.up.isDown) {
+    gameState.codey.y -= 1
+  } else if (gameState.cursors.right.isDown) {
+    gameState.codey.x += 1
+  } else if (gameState.cursors.left.isDown) {
+    gameState.codey.x -= 1
+  }
 }
 
 const config = {
-	type: Phaser.AUTO,
-	width: 400,
-	height: 500,
-	backgroundColor: "#5f2a55",
-	scene: {
+  width: 600,
+  height: 600,
+  backgroundColor: '#7ef9ff',
+  scene: {
     preload,
     create,
     update
-	}
+  }
 }
 
 const game = new Phaser.Game(config)
