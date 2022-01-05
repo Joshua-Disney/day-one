@@ -11,4 +11,6 @@ const gameState = {
   };
   
   const game = new Phaser.Game(config);
-  
+
+//   JUST KIDDING  
+// No new code, the assignment just explained how it all connects together
