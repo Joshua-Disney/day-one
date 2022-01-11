@@ -1,0 +1,153 @@
+1: What would be a reason for using a sprite sheet instead of a static image?
+
+    A static image can cause the page to freeze up whereas a sprite sheet will never cause the page to freeze.
+    A sprite sheet can be loaded locally whereas a static image cannot.
+    Using a sprite sheet creates multiple sprites at a time.
+    A sprite sheet allows us to animate the sprite and show movement.  My guess / Correct
+
+
+
+2: Given the following tween (and this referring to the Scene object), will codey return back to its original position?
+
+const codey = this.add.sprite(100, 100, 'codey')
+ 
+this.tweens.add({
+  targets: codey,
+  x: 500,
+  y: 1000,
+  ease: 'Linear',
+  duration: 3000,
+  yoyo: true
+});
+
+    No, since there is no repeat property
+    Yes, since yoyo is set to true.  My guess / Correct
+
+
+
+3: Fill in the code to create an animation that continously plays at 10 frames per second:
+
+gameState.heroSprite = this.physics.add.sprite(0, 500, 'hero');
+ 
+this.anims.create({
+  key: '',
+  frames: this.anims.generateFrameNumbers('', { start: 0, end: 5 }),
+  frameRate: ,
+  repeat: 
+});
+
+    0  100  10  hero  -1  run
+    Click or drag and drop to fill in the blank
+
+    this.anims.create({
+        key: 'run',
+        frames: this.anims.generateFrameNumbers('hero', { start: 0, end: 5 }),
+        frameRate: 10,
+        repeat: -1
+    });   My guess / Correct
+
+
+
+4: What happens when exampleSprite.anims.pause() is called?
+
+    All of the Scene’s sprites animations are paused.
+    The sprite sheet for exampleSprite will be removed from game.
+    The sprites around exampleSprite will have their animations paused.
+    Only exampleSprite‘s animation is paused.  My guess / Correct
+
+
+
+5: What is the importance of calling setting a sprite’s flipX property to true?
+
+    By assigning a sprite’s flipX property to true the game’s gravity is no longer needed.
+    By assigning a sprite’s flipX property to true will automatically play its animation.
+    Assigning a sprite’s flipX property to true will flip it on its x-axis which allows the sprite to turn and continue animating.  My guess / Correct
+    Assigning a sprite’s flipX property to true increases the frame rate of the animation considerably.
+
+
+
+6: If we have a sprite sheet that is 600 pixels wide and 50 pixels tall and contains 6 frames, how do we load this sprite sheet into our game?
+
+    this.load.spritesheet( 'spriteKey' , 'spriteSheet.png', { frameWidth: 100, frameHeight: 50 });  My guess / Correct
+    this.load.spritesheet( 'spriteKey' , 'spriteSheet.png');
+    this.load.spritesheet( 'spriteKey' , 'spriteSheet.png', { frameWidth: 200, frameHeight: 50 });
+    this.load.spritesheet( 'spriteKey' , 'spriteSheet.png', { frameWidth: 50, frameHeight: 50 });
+
+
+
+7: How do we play the following animation?
+
+gameState.exampleSprite = this.add.sprite(500, 415, 'spriteKey')
+ 
+this.anims.create({
+  key: 'animKey',
+  frames: this.anims.generateFrameNames('spriteKey', { start: 0 , end: 5}),
+  delay: 0,
+  frameRate: 25,
+  repeat: -1
+})
+
+    gameState.exampleSprite.anims.play('spriteKey')
+    gameState.exampleSprite.animation = true
+    gameState.exampleSprite.executeAnimation('animKey')
+    gameState.exampleSprite.anims.play('animKey')  My guess / Correct
+
+
+
+8: What is the correct sequence to animating a sprite?
+
+    Load in the sprite sheet. -> Create the sprite object. -> Create the animation. -> Play the animation.  My guess / Correct
+    Create the animation. -> Create the sprite object. -> Load in the sprite sheet. -> Play the animation.
+    Load in the sprite sheet. -> Create the sprite object. -> Play the animation.
+    Load in the sprite sheet. -> Play the animation.
+
+
+
+9: Fill in the code to create a tween that: goes to the x-coordinate of 500, goes to the y-coordinate of 120, plays once, and does NOT return to its original state.
+
+this.tweens.add({
+  targets: gameState.spriteOrCola,
+  x: ,
+  y: 
+  ease: 'Linear',
+  duration: 3000,
+  repeat: ,
+  yoyo: 
+});
+
+    true  500  0  1  -1  120  false
+    Click or drag and drop to fill in the blank
+
+    this.tweens.add({
+        targets: gameState.spriteOrCola,
+        x: 500,
+        y: 120
+        ease: 'Linear',
+        duration: 3000,
+        repeat: 0,
+        yoyo: false
+    });  My guess  /  Incorrect / Repeat should be 1
+
+
+
+10: Fill in the code to create a tween that logs 'Hi!' to the console every time the tween repeats.
+
+this.tweens.add({
+  target: gameState.exampleSprite,
+  x: 300,
+  ease: 'Linear',
+  duration: 3000,
+  repeat: -1,
+  yoyo: true,
+  : function() {
+    console.log('Hi!')
+  }
+});
+
+    onYoyo  onComplete  onRepeat  onStart
+    Click or drag and drop to fill in the blank
+
+    onReapeat   My guess / Correct
+
+
+Total score: 9/10  Got question 9 incorrect
