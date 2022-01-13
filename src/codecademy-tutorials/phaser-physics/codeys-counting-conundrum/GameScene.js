@@ -17,7 +17,7 @@ class GameScene extends Phaser.Scene {
         // Displays the number that the circle will cover
         currentCircle.text = this.add.text(randomCoord.x, randomCoord.y, i, { fill: '#4D39E0', fontSize: '30px' }) 
   
-        // Assigns a number property to the rectange 
+        // Assigns a number property to the circle 
         currentCircle.number = i
   
         // Adds the circle to our gameState.circles group
@@ -27,16 +27,44 @@ class GameScene extends Phaser.Scene {
         currentCircle.setInteractive();
   
         // Add the code for tweens below:
-              
-        
-        
-      }
+              this.tweens.add({
+          targets: currentCircle,
+          paused: false,
+          completeDelay: 3000,
+          onComplete: function() {
+            currentCircle.fillAlpha = 1 ,
+            gameState.textAlert.setText("")
+            gameState.score.setText(`  Correct: ${gameState.correct}\nIncorrect: ${gameState.incorrect}`)
+            currentCircle.on('pointerup', () => {
+              if (gameState.counter === currentCircle.number) {
+                gameState.counter++
+                gameState.correct++
+                currentCircle.destroy()
+              } else {
+                gameState.incorrect++
+                currentCircle.wrongTween.restart()
+              }
+              gameState.score.setText(`  Correct: ${gameState.correct}\nIncorrect: ${gameState.incorrect}`)
+            })
+          }
+        }) /* End of score tween */
+  
+        currentCircle.wrongTween = this.tweens.add({
+          targets: currentCircle,
+          paused: true,
+          scaleX: 1.5,
+          scaleY: 1.5,
+          yoyo: true,
+          duration: 150
+        })
+  
+      } /* End of circles for loop */
   
       // Adds in the starting text for GameScene
       this.add.rectangle(225, 550, 450, 100, 0xFFFFFF, 0.2)
       gameState.textAlert = this.add.text(65, 520, 'Remember the location \n   of the numbers!', { fill: '#4D39E0', fontSize: '25px' }) 
       gameState.score = this.add.text(100, 520, "", { fill: '#4D39E0', fontSize: '25px' }) 
-    }
+    } /* End of create() */
   
     update() {
       if (gameState.circles.getChildren().length === 0) {
@@ -44,7 +72,7 @@ class GameScene extends Phaser.Scene {
               this.scene.stop('GameScene')
         this.scene.start('EndScene')
       }
-    }
+    } /* End of update() */
   
     // Helper function to return an object containing evenly spaced x and y coordinates:
     generateRandomCoords () {
@@ -66,5 +94,6 @@ class GameScene extends Phaser.Scene {
   
       return assignedCoord
     }
+    /* End of helper functions */
   }
   
