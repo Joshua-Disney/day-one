@@ -1,0 +1,55 @@
+1: What are the arguments to this.cameras.main.shake()?
+
+A: duration, focus, blurRadius, callback, context
+B: duration, intensity, directionX, directionY, callback
+C: duration, intensity, force, callback, and context.
+My guess: A  
+INCORRECT    
+Actual answer: C
+
+
+2: What is parallax scrolling?
+
+A: A fun way to add some design knowledge to a scrollbar on a website
+B: A way to make some images appear larger than other ones.
+C: A visual tool involving scrolling different background images faster or slower, creating a distance effect.
+My guess: C  
+CORRECT
+
+3: What does the force argument do in this.cameras.main.fade() and this.cameras.main.shake()?
+
+A: Restarts the effect if it is already happening.
+B: Ignores other ongoing effects and forces this one to happen.
+C: Increases the intensity of the effect to be more forceful
+My guess: C
+INCORRECT    
+Actual answer: A
+
+
+4: Which of the following commands will shake the camera?
+
+A: this.cameras.shake()
+B: this.cameras.main.shake()
+C: this.cameras.main.tilt()
+My guess: B
+CORRECT
+
+
+5: How do you update a Camera’s bounds?
+
+A: Call .setBounds() on the camera.
+B: Call .updateBounds() on the camera.
+C: Give specific bounds to the camera as an object when calling its constructor.
+My guess: A
+CORRECT
+
+
+6: Which of the following functions will fade the camera out?
+
+A: this.cameras.main.fadeOut()
+B: this.cameras.main.fade()
+C: this.cameras.main.fadeIn()
+My guess: B 
+CORRECT
+
+66%  Restudy
